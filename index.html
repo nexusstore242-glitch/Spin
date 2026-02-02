@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Nexus122 - Situs Edukasi Anti-Slot</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="sidebar-overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sb-header-profile" id="sb-profile" style="display:none;">
+            <div class="sb-avatar"><i class="fa-solid fa-user-astronaut"></i></div>
+            <div class="sb-user-info">
+                <div class="sb-username" id="sb-username-text">User</div>
+                <div class="sb-saldo" id="sb-saldo-text">IDR 0</div>
+            </div>
+        </div>
+
+        <div class="sb-menu-list">
+            <div class="sb-item guest-only" onclick="openModal('loginModal')">
+                <i class="fa-solid fa-right-to-bracket"></i> Masuk
+            </div>
+            <div class="sb-item guest-only" onclick="openModal('registerModal')">
+                <i class="fa-solid fa-user-plus"></i> Daftar
+            </div>
+
+            <div class="sb-item member-only" onclick="openTransaction('depo')">
+                <i class="fa-solid fa-wallet" style="color:#4CAF50"></i> Deposit
+            </div>
+            <div class="sb-item member-only" onclick="openTransaction('wd')">
+                <i class="fa-solid fa-money-bill-transfer" style="color:#FF9800"></i> Penarikan
+            </div>
+            <div class="sb-item member-only" onclick="openModal('profileModal')">
+                <i class="fa-solid fa-user-gear"></i> Pengaturan Akun
+            </div>
+            <div class="sb-item member-only" onclick="openHistory()">
+                <i class="fa-solid fa-clock-rotate-left"></i> Riwayat Transaksi
+            </div>
+
+            <hr style="border-color: #333; margin: 10px 0;">
+
+            <div class="sb-item sb-highlight" onclick="openVip()">
+    <i class="fa-regular fa-gem"></i> VIP Member
+</div>
+
+            <div class="sb-item"><i class="fa-solid fa-percent"></i> Promosi</div>
+            <div class="sb-item" onclick="openTelegram()">
+                <i class="fa-brands fa-telegram" style="color:#0088cc;"></i> Grup Official
+            </div>
+            <div class="sb-item" onclick="openLiveChat()">
+                <i class="fa-brands fa-whatsapp" style="color:#25d366;"></i> WhatsApp Admin
+            </div>
+            <div class="sb-item"><i class="fa-solid fa-download"></i> Download APK</div>
+        </div>
+
+        <div class="logout-btn member-only" onclick="handleLogout()">
+            <i class="fa-solid fa-power-off"></i> KELUAR
+        </div>
+    </aside>
+
+        <header class="top-header">
+        <div class="header-left">
+            <i class="fa-solid fa-bars" onclick="toggleSidebar()"></i>
+            <img src="assets/logo.png" onerror="this.src='https://placehold.co/150x50/000/ff0000?text=NEXUS122'" alt="NEXUS122" class="logo-img">
+        </div>
+        
+        <div class="header-right">
+            <div id="guest-panel">
+                <button class="btn-login" onclick="openModal('loginModal')">Masuk</button>
+                <button class="btn-register" onclick="openModal('registerModal')">Daftar</button>
+            </div>
+            <div id="user-panel" style="display:none;">
+                <div class="user-balance">
+                    <span style="font-size:10px; color:#aaa;">IDR</span>
+                    <span id="header-saldo" style="color:var(--primary); font-weight:bold;">0</span>
+                </div>
+                <div class="btn-add" onclick="openTransaction('depo')">+</div>
+            </div>
+        </div>
+    </header>
+
+
+    <nav class="cat-nav">
+        <div class="cat-item active" onclick="switchCategory('home', this)">Home</div>
+        <div class="cat-item" onclick="switchCategory('slot', this)">Slot</div>
+        <div class="cat-item" onclick="switchCategory('casino', this)">Live Casino</div>
+        <div class="cat-item" onclick="switchCategory('sport', this)">Sports</div>
+        <div class="cat-item" onclick="switchCategory('poker', this)">Poker</div>
+        <div class="cat-item" onclick="switchCategory('togel', this)">Togel</div>
+        <div class="cat-item" onclick="switchCategory('fishing', this)">Fishing</div>
+    </nav>
+
+    <main class="content">
+
+        <div id="view-home" class="category-view" style="display: block;">          
+        
+                    <div class="banner-wrapper">
+                <div class="slider-track" id="bannerTrack">
+                    
+                    <div class="banner-slide">
+                        <img src="assets/banners/banner1.jpg" onerror="this.src='https://placehold.co/600x250/330000/ff0000?text=EVENT+PETIR+MERAH'" alt="Banner 1">
+                    </div>
+                    
+                    <div class="banner-slide">
+                        <img src="assets/banners/banner2.jpg" onerror="this.src='https://placehold.co/600x250/111/gold?text=BONUS+NEW+MEMBER'" alt="Banner 2">
+                    </div>
+                    
+                    <div class="banner-slide">
+                        <img src="assets/banners/banner3.jpg" onerror="this.src='https://placehold.co/600x250/003300/fff?text=PARLAY+WIN+100%25'" alt="Banner 3">
+                    </div>
+
+                    <div class="banner-slide">
+                        <img src="assets/banners/banner4.jpg" onerror="this.src='https://placehold.co/600x250/000033/00ccff?text=GATE+OF+OLYMPUS'" alt="Banner 4">
+                    </div>
+
+                    <div class="banner-slide">
+                        <img src="assets/banners/banner5.jpg" onerror="this.src='https://placehold.co/600x250/330033/ff00ff?text=EVENT+MAHJONG'" alt="Banner 5">
+                    </div>
+
+                    <div class="banner-slide">
+                        <img src="assets/banners/banner6.jpg" onerror="this.src='https://placehold.co/600x250/331100/ff6600?text=DAILY+WINS'" alt="Banner 6">
+                    </div>
+
+                </div>
+                
+                <div class="slider-dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+
+
+            
+            <div class="marquee-container">
+                <i class="fa-solid fa-bullhorn"></i>
+                <marquee>Nexus122: Selamat Datang! Situs ini adalah simulasi edukasi. RTP Live Tertinggi Hari Ini: Mahjong Ways (98%), Olympus (97%).</marquee>
+            </div>
+
+                        <div class="user-dashboard-area member-only" style="display:none;">
+                
+                <div class="dash-action-btns">
+                    <button class="btn-action-depo" onclick="openTransaction('depo')">Deposit</button>
+                    <button class="btn-action-trans" onclick="openTransaction('wd')">Transaksi</button>
+                </div>
+
+                <div class="dash-profile-card">
+                    <div class="card-left">
+                        <div class="rank-circle">
+                            <i class="fa-solid fa-star"></i>
+                            <span class="rank-label">Iron</span>
+                        </div>
+                        
+                        <div class="user-text-info">
+                            <div class="ud-username" id="display-username">Loading...</div>
+                            <div class="ud-saldo-box">
+                                <span class="currency">Rp.</span>
+                                <span class="amount" id="display-saldo">0.00</span>
+                                <i class="fa-solid fa-rotate-right refresh-icon" onclick="refreshUserData()"></i>
+                                <i class="fa-solid fa-crosshairs target-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                                        <div class="card-right" onclick="openVip()" style="cursor:pointer;">
+    <img src="assets/chest.png" alt="Chest" class="chest-anim">
+</div>
+
+
+                </div>
+            </div>
+
+            <div class="hero-btns guest-only" style="margin-bottom: 20px;">
+                <button class="btn-primary" onclick="openModal('loginModal')" style="background:transparent; border:1px solid var(--primary); color:var(--primary)">Masuk</button>
+                <button class="btn-primary" onclick="openModal('registerModal')">Daftar</button>
+            </div>
+
+                        <div class="section-head">
+                <div class="sec-title"><i class="fa-solid fa-fire" style="color:red"></i> POPULER HARI INI</div>
+            </div>
+            
+            <div class="game-grid">
+                <a href="https://m.eajzzxhro.com/65/index.html?ot=ca7094186b309ee149c55c8822e7ecf2&l=en&btt=2&or=21novodx%3Dzveuuscmj%3Dxjh&__hv=2fMEQCICuqoNGFMML4fGBdQE%2BkWN6hW4%2FfORGq%2Fnk1ZEMnawwmAiAxGYxJjOCWQZyBSVILpJeMljpfcPHLJNuUZN5itlB12A%3D%3D&__sv=010401YytG6oT6vOl81kKt_NDwR6QjynyruQC7y9kpWiV7QEg" target="_blank" class="game-card">
+                    <span class="tag">PG</span>
+                    <img src="assets/games/mahjong1.jpg" onerror="this.src='https://placehold.co/200x200/003300/fff?text=Mahjong+1'" alt="Game">
+                    <div class="game-info">Mahjong Ways 1</div>
+                </a>
+
+                <a href="https://d3pvfi6m7bxu71.cloudfront.net/gs2c/html5Game.do?extGame=1&symbol=vs20olympgate&gname=Gates%20of%20Olympus&jurisdictionID=99&mgckey=stylename@generic~SESSION@ba962998-9252-4324-ae4f-72a486640ef9" target="_blank" class="game-card">
+                    <span class="tag" style="background:orange">PRAG</span>
+                    <img src="assets/games/olympus.jpg" onerror="this.src='https://placehold.co/200x200/4169e1/fff?text=Olympus'" alt="Game">
+                    <div class="game-info">Gates of Olympus</div>
+                </a>
+
+                <a href="https://d3pvfi6m7bxu71.cloudfront.net/gs2c/html5Game.do?extGame=1&symbol=vs20starlightx&gname=Starlight%20Princess%201000&jurisdictionID=99&mgckey=stylename@generic~SESSION@89279422-86d7-4980-b92d-3c006d244028" target="_blank" class="game-card">
+                    <span class="tag" style="background:orange">PRAG</span>
+                    <img src="assets/games/starlight1000.jpg" onerror="this.src='https://placehold.co/200x200/ff1493/fff?text=Inces+1000'" alt="Game">
+                    <div class="game-info">Starlight 1000</div>
+                </a>
+
+                <a href="https://m.eajzzxhro.com/135/index.html?ot=ca7094186b309ee149c55c8822e7ecf2&l=en&btt=2&or=21novodx%3Dzveuuscmj%3Dxjh&__hv=2fMEQCICuqoNGFMML4fGBdQE%2BkWN6hW4%2FfORGq%2Fnk1ZEMnawwmAiAxGYxJjOCWQZyBSVILpJeMljpfcPHLJNuUZN5itlB12A%3D%3D&__sv=010401YytG6oT6vOl81kKt_NDwR6QjynyruQC7y9kpWiV7QEg" target="_blank" class="game-card">
+                    <span class="tag">PG</span>
+                    <img src="assets/games/wildbounty.jpg" onerror="this.src='https://placehold.co/200x200/553311/fff?text=Wild+Bounty'" alt="Game">
+                    <div class="game-info">Wild Bounty</div>
+                </a>
+
+                <a href="https://d3pvfi6m7bxu71.cloudfront.net/gs2c/html5Game.do?extGame=1&symbol=vs20olgatssc&gname=Gates%20of%20Gatot%20Kaca%20Super%20Scatter&jurisdictionID=99&mgckey=stylename@generic~SESSION@790f6639-d44f-43d7-8b4c-789bb00e7466" target="_blank" class="game-card">
+                    <span class="tag" style="background:orange">PRAG</span>
+                    <img src="assets/games/gatotkaca.jpg" onerror="this.src='https://placehold.co/200x200/8b0000/fff?text=Gatot+Kaca'" alt="Game">
+                    <div class="game-info">Gatot Kaca</div>
+                </a>
+
+                <a href="https://m.eajzzxhro.com/89/index.html?ot=ca7094186b309ee149c55c8822e7ecf2&l=en&btt=2&or=21novodx%3Dzveuuscmj%3Dxjh&__hv=2fMEQCICuqoNGFMML4fGBdQE%2BkWN6hW4%2FfORGq%2Fnk1ZEMnawwmAiAxGYxJjOCWQZyBSVILpJeMljpfcPHLJNuUZN5itlB12A%3D%3D&__sv=010401YytG6oT6vOl81kKt_NDwR6QjynyruQC7y9kpWiV7QEg" target="_blank" class="game-card">
+                    <span class="tag">PG</span>
+                    <img src="assets/games/luckyneko.jpg" onerror="this.src='https://placehold.co/200x200/ff69b4/fff?text=Lucky+Neko'" alt="Game">
+                    <div class="game-info">Lucky Neko</div>
+                </a>
+
+                <a href="https://d3pvfi6m7bxu71.cloudfront.net/gs2c/html5Game.do?extGame=1&symbol=vswaysmahwblck&gname=Mahjong%20Wins%203%20-%20Black%20Scatter&jurisdictionID=99&mgckey=stylename@generic~SESSION@6791629f-4a78-4cd6-84d1-64e310b16723" target="_blank" class="game-card">
+                    <span class="tag" style="background:orange">PRAG</span>
+                    <img src="assets/games/mahjongwins3.jpg" onerror="this.src='https://placehold.co/200x200/222/orange?text=Mahjong+3'" alt="Game">
+                    <div class="game-info">Mahjong Wins 3</div>
+                </a>
+
+                <a href="https://m.eajzzxhro.com/104/index.html?ot=ca7094186b309ee149c55c8822e7ecf2&l=en&btt=2&or=21novodx%3Dzveuuscmj%3Dxjh&__hv=2fMEQCICuqoNGFMML4fGBdQE%2BkWN6hW4%2FfORGq%2Fnk1ZEMnawwmAiAxGYxJjOCWQZyBSVILpJeMljpfcPHLJNuUZN5itlB12A%3D%3D&__sv=010401YytG6oT6vOl81kKt_NDwR6QjynyruQC7y9kpWiV7QEg" target="_blank" class="game-card">
+                    <span class="tag">PG</span>
+                    <img src="assets/games/wildbandito.jpg" onerror="this.src='https://placehold.co/200x200/330033/fff?text=Bandito'" alt="Game">
+                    <div class="game-info">Wild Bandito</div>
+                </a>
+
+                <a href="https://d3pvfi6m7bxu71.cloudfront.net/gs2c/html5Game.do?extGame=1&symbol=vs20sugarrush&gname=Sugar%20Rush&jurisdictionID=99&mgckey=stylename@generic~SESSION@3982a9b2-0f7f-45bd-913e-96003b57dffe" target="_blank" class="game-card">
+                    <span class="tag" style="background:orange">PRAG</span>
+                    <img src="assets/games/sugarrush.jpg" onerror="this.src='https://placehold.co/200x200/da70d6/fff?text=Sugar+Rush'" alt="Game">
+                    <div class="game-info">Sugar Rush</div>
+                </a>
+            </div>
+            
+                        <div class="see-more-container">
+                <button class="btn-see-more" onclick="switchCategory('slot', document.querySelectorAll('.cat-item')[1])">
+                    LIHAT SEMUA PERMAINAN <i class="fa-solid fa-angles-right"></i>
+                </button>
+            </div>
+
+            
+        </div>
+
+                <div id="view-slot" class="category-view" style="display: none;">
+            
+            <div id="slot-main-menu">
+                <div class="filter-container">
+                    <div class="search-wrap">
+                        <input type="text" placeholder="Cari provider..." disabled style="cursor:no-drop;">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                </div>
+
+                <div class="section-head"><div class="sec-title"><i class="fa-solid fa-layer-group"></i> SEMUA PROVIDER</div></div>
+                
+                <div class="provider-grid">
+                    <div class="provider-card" onclick="openProvider('pg')">
+                        <img src="assets/providers/pg.png" onerror="this.src='https://placehold.co/120x60/000/fff?text=PG+SOFT'" alt="PG SOFT">
+                        <div class="prov-name">PG SOFT</div>
+                    </div>
+                    <div class="provider-card" onclick="openProvider('pragmatic')">
+                        <img src="assets/providers/pragmatic.png" onerror="this.src='https://placehold.co/120x60/000/fff?text=PRAGMATIC'" alt="PRAGMATIC">
+                        <div class="prov-name">PRAGMATIC PLAY</div>
+                    </div>
+                    <div class="provider-card" onclick="openProvider('habanero')">
+                        <img src="assets/providers/habanero.png" onerror="this.src='https://placehold.co/120x60/000/fff?text=HABANERO'" alt="HABANERO">
+                        <div class="prov-name">HABANERO</div>
+                    </div>
+                    <div class="provider-card" onclick="openProvider('spade')">
+                        <img src="assets/providers/spade.png" onerror="this.src='https://placehold.co/120x60/000/fff?text=SPADE'" alt="SPADE">
+                        <div class="prov-name">SPADEGAMING</div>
+                    </div>
+                    <div class="provider-card" onclick="openProvider('joker')">
+                        <img src="assets/providers/joker.png" onerror="this.src='https://placehold.co/120x60/000/fff?text=JOKER'" alt="JOKER">
+                        <div class="prov-name">JOKER GAMING</div>
+                    </div>
+                    <div class="provider-card" onclick="openProvider('micro')">
+                        <img src="assets/providers/micro.png" onerror="this.src='https://placehold.co/120x60/000/fff?text=MICRO'" alt="MICRO">
+                        <div class="prov-name">MICROGAMING</div>
+                    </div>
+                    <div class="provider-card" onclick="openProvider('nlc')">
+                        <img src="assets/providers/nlc.png" onerror="this.src='https://placehold.co/120x60/000/fff?text=NLC'" alt="NLC">
+                        <div class="prov-name">NOLIMIT CITY</div>
+                    </div>
+                    <div class="provider-card" onclick="openProvider('cq9')">
+                        <img src="assets/providers/cq9.png" onerror="this.src='https://placehold.co/120x60/000/fff?text=CQ9'" alt="CQ9">
+                        <div class="prov-name">CQ9 GAMING</div>
+                    </div>
+                </div>
+            </div>
+
+
+
+                        <div id="games-pg" class="provider-game-list" style="display:none;">
+                <div class="back-bar" onclick="backToProvider()">
+                    <i class="fa-solid fa-arrow-left"></i> KEMBALI
+                </div>
+                <div class="section-head"><div class="sec-title">PG SOFT GAMES</div></div>
+                
+                <div class="game-grid">
+                    <div class="game-card">
+                        <span class="tag">PG</span>
+                        <img src="assets/games/mahjong1.jpg" onerror="this.src='https://placehold.co/200x200/003300/fff?text=Mahjong+1'" alt="Game">
+                        <div class="play-overlay">
+                            <a href="https://m.eajzzxhro.com/65/index.html?ot=ca7094186b309ee149c55c8822e7ecf2&l=en&btt=2&or=21novodx%3Dzveuuscmj%3Dxjh&__hv=2fMEQCICuqoNGFMML4fGBdQE%2BkWN6hW4%2FfORGq%2Fnk1ZEMnawwmAiAxGYxJjOCWQZyBSVILpJeMljpfcPHLJNuUZN5itlB12A%3D%3D&__sv=010401YytG6oT6vOl81kKt_NDwR6QjynyruQC7y9kpWiV7QEg" target="_blank" class="btn-play">PLAY</a>
+                        </div>
+                        <div class="game-info">Mahjong Ways 1</div>
+                    </div>
+
+                    <div class="game-card">
+                        <span class="tag">PG</span>
+                        <img src="assets/games/wildbounty.jpg" onerror="this.src='https://placehold.co/200x200/553311/fff?text=Wild+Bounty'" alt="Game">
+                        <div class="play-overlay">
+                            <a href="https://m.eajzzxhro.com/135/index.html?ot=ca7094186b309ee149c55c8822e7ecf2&l=en&btt=2&or=21novodx%3Dzveuuscmj%3Dxjh&__hv=2fMEQCICuqoNGFMML4fGBdQE%2BkWN6hW4%2FfORGq%2Fnk1ZEMnawwmAiAxGYxJjOCWQZyBSVILpJeMljpfcPHLJNuUZN5itlB12A%3D%3D&__sv=010401YytG6oT6vOl81kKt_NDwR6QjynyruQC7y9kpWiV7QEg" target="_blank" class="btn-play">PLAY</a>
+                        </div>
+                        <div class="game-info">Wild Bounty</div>
+                    </div>
+
+                    <div class="game-card">
+                        <span class="tag">PG</span>
+                        <img src="assets/games/wildbandito.jpg" onerror="this.src='https://placehold.co/200x200/330033/fff?text=Wild+Bandito'" alt="Game">
+                        <div class="play-overlay">
+                            <a href="https://m.eajzzxhro.com/104/index.html?ot=ca7094186b309ee149c55c8822e7ecf2&l=en&btt=2&or=21novodx%3Dzveuuscmj%3Dxjh&__hv=2fMEQCICuqoNGFMML4fGBdQE%2BkWN6hW4%2FfORGq%2Fnk1ZEMnawwmAiAxGYxJjOCWQZyBSVILpJeMljpfcPHLJNuUZN5itlB12A%3D%3D&__sv=010401YytG6oT6vOl81kKt_NDwR6QjynyruQC7y9kpWiV7QEg" target="_blank" class="btn-play">PLAY</a>
+                        </div>
+                        <div class="game-info">Wild Bandito</div>
+                    </div>
+
+                    <div class="game-card">
+                        <span class="tag">PG</span>
+                        <img src="assets/games/luckyneko.jpg" onerror="this.src='https://placehold.co/200x200/ff69b4/fff?text=Lucky+Neko'" alt="Game">
+                        <div class="play-overlay">
+                            <a href="https://m.eajzzxhro.com/89/index.html?ot=ca7094186b309ee149c55c8822e7ecf2&l=en&btt=2&or=21novodx%3Dzveuuscmj%3Dxjh&__hv=2fMEQCICuqoNGFMML4fGBdQE%2BkWN6hW4%2FfORGq%2Fnk1ZEMnawwmAiAxGYxJjOCWQZyBSVILpJeMljpfcPHLJNuUZN5itlB12A%3D%3D&__sv=010401YytG6oT6vOl81kKt_NDwR6QjynyruQC7y9kpWiV7QEg" target="_blank" class="btn-play">PLAY</a>
+                        </div>
+                        <div class="game-info">Lucky Neko</div>
+                    </div>
+
+                    <div class="game-card">
+                        <span class="tag">PG</span>
+                        <img src="assets/games/aztec.jpg" onerror="this.src='https://placehold.co/200x200/8b4513/fff?text=Aztec'" alt="Game">
+                        <div class="play-overlay">
+                            <a href="https://m.eajzzxhro.com/87/index.html?ot=ca7094186b309ee149c55c8822e7ecf2&l=en&btt=2&or=21novodx%3Dzveuuscmj%3Dxjh&__hv=2fMEQCICuqoNGFMML4fGBdQE%2BkWN6hW4%2FfORGq%2Fnk1ZEMnawwmAiAxGYxJjOCWQZyBSVILpJeMljpfcPHLJNuUZN5itlB12A%3D%3D&__sv=010401YytG6oT6vOl81kKt_NDwR6QjynyruQC7y9kpWiV7QEg" target="_blank" class="btn-play">PLAY</a>
+                        </div>
+                        <div class="game-info">Treasures of Aztec</div>
+                    </div>
+
+                    <div class="game-card">
+                        <span class="tag">PG</span>
+                        <img src="assets/games/icescape.jpg" onerror="this.src='https://placehold.co/200x200/00bfff/fff?text=Icescape'" alt="Game">
+                        <div class="play-overlay">
+                            <a href="https://m.eajzzxhro.com/53/index.html?ot=ca7094186b309ee149c55c8822e7ecf2&l=en&btt=2&or=21novodx%3Dzveuuscmj%3Dxjh&__hv=2fMEQCICuqoNGFMML4fGBdQE%2BkWN6hW4%2FfORGq%2Fnk1ZEMnawwmAiAxGYxJjOCWQZyBSVILpJeMljpfcPHLJNuUZN5itlB12A%3D%3D&__sv=010401YytG6oT6vOl81kKt_NDwR6QjynyruQC7y9kpWiV7QEg" target="_blank" class="btn-play">PLAY</a>
+                        </div>
+                        <div class="game-info">Great Icescape</div>
+                    </div>
+
+                    <div class="game-card">
+                        <span class="tag">PG</span>
+                        <img src="assets/games/mafia.jpg" onerror="this.src='https://placehold.co/200x200/333/fff?text=Mafia'" alt="Game">
+                        <div class="play-overlay">
+                            <a href="https://m.eajzzxhro.com/1580541/index.html?ot=ca7094186b309ee149c55c8822e7ecf2&l=en&btt=2&or=21novodx%3Dzveuuscmj%3Dxjh&__hv=2fMEQCICuqoNGFMML4fGBdQE%2BkWN6hW4%2FfORGq%2Fnk1ZEMnawwmAiAxGYxJjOCWQZyBSVILpJeMljpfcPHLJNuUZN5itlB12A%3D%3D&__sv=010401YytG6oT6vOl81kKt_NDwR6QjynyruQC7y9kpWiV7QEg" target="_blank" class="btn-play">PLAY</a>
+                        </div>
+                        <div class="game-info">Mafia Mayhem</div>
+                    </div>
+
+                    <div class="game-card">
+                        <span class="tag">PG</span>
+                        <img src="assets/games/pinata.jpg" onerror="this.src='https://placehold.co/200x200/ff4500/fff?text=Pinata'" alt="Game">
+                        <div class="play-overlay">
+                            <a href="https://m.eajzzxhro.com/1492288/index.html?ot=ca7094186b309ee149c55c8822e7ecf2&l=en&btt=2&or=21novodx%3Dzveuuscmj%3Dxjh&__hv=2fMEQCICuqoNGFMML4fGBdQE%2BkWN6hW4%2FfORGq%2Fnk1ZEMnawwmAiAxGYxJjOCWQZyBSVILpJeMljpfcPHLJNuUZN5itlB12A%3D%3D&__sv=010401YytG6oT6vOl81kKt_NDwR6QjynyruQC7y9kpWiV7QEg" target="_blank" class="btn-play">PLAY</a>
+                        </div>
+                        <div class="game-info">Pinata Wins</div>
+                    </div>
+
+                    <div class="game-card">
+                        <span class="tag">PG</span>
+                        <img src="assets/games/qillin.jpg" onerror="this.src='https://placehold.co/200x200/006400/fff?text=Qillin'" alt="Game">
+                        <div class="play-overlay">
+                            <a href="https://m.eajzzxhro.com/106/index.html?ot=ca7094186b309ee149c55c8822e7ecf2&l=en&btt=2&or=21novodx%3Dzveuuscmj%3Dxjh&__hv=2fMEQCICuqoNGFMML4fGBdQE%2BkWN6hW4%2FfORGq%2Fnk1ZEMnawwmAiAxGYxJjOCWQZyBSVILpJeMljpfcPHLJNuUZN5itlB12A%3D%3D&__sv=010401YytG6oT6vOl81kKt_NDwR6QjynyruQC7y9kpWiV7QEg" target="_blank" class="btn-play">PLAY</a>
+                        </div>
+                        <div class="game-info">Ways of Qillin</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="games-pragmatic" class="provider-game-list" style="display:none;">
+                <div class="back-bar" onclick="backToProvider()">
+                    <i class="fa-solid fa-arrow-left"></i> KEMBALI
+                </div>
+                <div class="section-head"><div class="sec-title">PRAGMATIC PLAY</div></div>
+                
+                <div class="game-grid">
+                    <div class="game-card">
+                        <span class="tag" style="background:orange">PRAG</span>
+                        <img src="assets/games/starlight1000.jpg" onerror="this.src='https://placehold.co/200x200/ff1493/fff?text=Inces+1000'" alt="Game">
+                        <div class="play-overlay">
+                            <a href="https://d3pvfi6m7bxu71.cloudfront.net/gs2c/html5Game.do?extGame=1&symbol=vs20starlightx&gname=Starlight%20Princess%201000&jurisdictionID=99&mgckey=stylename@generic~SESSION@89279422-86d7-4980-b92d-3c006d244028" target="_blank" class="btn-play">PLAY</a>
+                        </div>
+                        <div class="game-info">Starlight 1000</div>
+                    </div>
+
+                    <div class="game-card">
+                        <span class="tag" style="background:orange">PRAG</span>
+                        <img src="assets/games/starlightuht.jpg" onerror="this.src='https://placehold.co/200x200/ff69b4/fff?text=Inces+UHT'" alt="Game">
+                        <div class="play-overlay">
+                            <a href="https://d3pvfi6m7bxu71.cloudfront.net/gs2c/html5Game.do?extGame=1&symbol=vs20starlight&gname=Starlight%20Princess&jurisdictionID=99&mgckey=stylename@generic~SESSION@e33409c5-a79a-46c3-9863-fcc31ee9135a" target="_blank" class="btn-play">PLAY</a>
+                        </div>
+                        <div class="game-info">Starlight UHT</div>
+                    </div>
+
+                    <div class="game-card">
+                        <span class="tag" style="background:orange">PRAG</span>
+                        <img src="assets/games/olympus.jpg" onerror="this.src='https://placehold.co/200x200/4169e1/fff?text=Olympus'" alt="Game">
+                        <div class="play-overlay">
+                            <a href="https://d3pvfi6m7bxu71.cloudfront.net/gs2c/html5Game.do?extGame=1&symbol=vs20olympgate&gname=Gates%20of%20Olympus&jurisdictionID=99&mgckey=stylename@generic~SESSION@ba962998-9252-4324-ae4f-72a486640ef9" target="_blank" class="btn-play">PLAY</a>
+                        </div>
+                        <div class="game-info">Gates of Olympus</div>
+                    </div>
+
+                    <div class="game-card">
+                        <span class="tag" style="background:orange">PRAG</span>
+                        <img src="assets/games/olympus1000.jpg" onerror="this.src='https://placehold.co/200x200/00008b/fff?text=Olympus+1000'" alt="Game">
+                        <div class="play-overlay">
+                            <a href="https://d3pvfi6m7bxu71.cloudfront.net/gs2c/html5Game.do?extGame=1&symbol=vs20olympx&gname=Gates%20of%20Olympus%201000&jurisdictionID=99&mgckey=stylename@generic~SESSION@672e40d9-702a-4943-92e2-db2a9d18df8e" target="_blank" class="btn-play">PLAY</a>
+                        </div>
+                        <div class="game-info">Olympus 1000</div>
+                    </div>
+
+                    <div class="game-card">
+                        <span class="tag" style="background:orange">PRAG</span>
+                        <img src="assets/games/mahjongwins3.jpg" onerror="this.src='https://placehold.co/200x200/222/orange?text=Mahjong+Wins'" alt="Game">
+                        <div class="play-overlay">
+                            <a href="https://d3pvfi6m7bxu71.cloudfront.net/gs2c/html5Game.do?extGame=1&symbol=vswaysmahwblck&gname=Mahjong%20Wins%203%20-%20Black%20Scatter&jurisdictionID=99&mgckey=stylename@generic~SESSION@6791629f-4a78-4cd6-84d1-64e310b16723" target="_blank" class="btn-play">PLAY</a>
+                        </div>
+                        <div class="game-info">Mahjong Wins 3</div>
+                    </div>
+
+                    <div class="game-card">
+                        <span class="tag" style="background:orange">PRAG</span>
+                        <img src="assets/games/sugarrush.jpg" onerror="this.src='https://placehold.co/200x200/da70d6/fff?text=Sugar+Rush'" alt="Game">
+                        <div class="play-overlay">
+                            <a href="https://d3pvfi6m7bxu71.cloudfront.net/gs2c/html5Game.do?extGame=1&symbol=vs20sugarrush&gname=Sugar%20Rush&jurisdictionID=99&mgckey=stylename@generic~SESSION@3982a9b2-0f7f-45bd-913e-96003b57dffe" target="_blank" class="btn-play">PLAY</a>
+                        </div>
+                        <div class="game-info">Sugar Rush</div>
+                    </div>
+
+                    <div class="game-card">
+                        <span class="tag" style="background:orange">PRAG</span>
+                        <img src="assets/games/gatotkaca.jpg" onerror="this.src='https://placehold.co/200x200/8b0000/fff?text=Gatot+Kaca'" alt="Game">
+                        <div class="play-overlay">
+                            <a href="https://d3pvfi6m7bxu71.cloudfront.net/gs2c/html5Game.do?extGame=1&symbol=vs20olgatssc&gname=Gates%20of%20Gatot%20Kaca%20Super%20Scatter&jurisdictionID=99&mgckey=stylename@generic~SESSION@790f6639-d44f-43d7-8b4c-789bb00e7466" target="_blank" class="btn-play">PLAY</a>
+                        </div>
+                        <div class="game-info">Gatot Kaca</div>
+                    </div>
+
+                    <div class="game-card">
+                        <span class="tag" style="background:orange">PRAG</span>
+                        <img src="assets/games/zeustyphon.jpg" onerror="this.src='https://placehold.co/200x200/191970/fff?text=Zeus+Typhon'" alt="Game">
+                        <div class="play-overlay">
+                            <a href="https://d3pvfi6m7bxu71.cloudfront.net/gs2c/html5Game.do?extGame=1&symbol=vswaysreelbtl&gname=Zeus%20vs%20Typhon&jurisdictionID=99&mgckey=stylename@generic~SESSION@d42dcfb9-b4c6-441e-91ea-1578b9ea3b32" target="_blank" class="btn-play">PLAY</a>
+                        </div>
+                        <div class="game-info">Zeus vs Typhon</div>
+                    </div>
+
+                    <div class="game-card">
+                        <span class="tag" style="background:orange">PRAG</span>
+                        <img src="assets/games/bonanzaxmas.jpg" onerror="this.src='https://placehold.co/200x200/add8e6/red?text=Bonanza+Xmas'" alt="Game">
+                        <div class="play-overlay">
+                            <a href="https://d3pvfi6m7bxu71.cloudfront.net/gs2c/html5Game.do?extGame=1&symbol=vs20sbxmas&gname=Sweet%20Bonanza%20Xmas&jurisdictionID=99&mgckey=stylename@generic~SESSION@d5f65a55-2ab6-4cad-8253-99547fd124fd" target="_blank" class="btn-play">PLAY</a>
+                        </div>
+                        <div class="game-info">Bonanza Xmas</div>
+                    </div>
+                </div>
+            </div>
+
+            
+
+            <div id="games-habanero" class="provider-game-list" style="display:none;"><div class="back-bar" onclick="backToProvider()"><i class="fa-solid fa-arrow-left"></i> KEMBALI</div><div style="text-align:center;padding:50px;">Game Habanero Segera Hadir</div></div>
+            <div id="games-spade" class="provider-game-list" style="display:none;"><div class="back-bar" onclick="backToProvider()"><i class="fa-solid fa-arrow-left"></i> KEMBALI</div><div style="text-align:center;padding:50px;">Game Spadegaming Segera Hadir</div></div>
+            <div id="games-joker" class="provider-game-list" style="display:none;"><div class="back-bar" onclick="backToProvider()"><i class="fa-solid fa-arrow-left"></i> KEMBALI</div><div style="text-align:center;padding:50px;">Game Joker Segera Hadir</div></div>
+            <div id="games-micro" class="provider-game-list" style="display:none;"><div class="back-bar" onclick="backToProvider()"><i class="fa-solid fa-arrow-left"></i> KEMBALI</div><div style="text-align:center;padding:50px;">Game Microgaming Segera Hadir</div></div>
+            <div id="games-nlc" class="provider-game-list" style="display:none;"><div class="back-bar" onclick="backToProvider()"><i class="fa-solid fa-arrow-left"></i> KEMBALI</div><div style="text-align:center;padding:50px;">Game NoLimit  Segera Hadir</div></div>
+            <div id="games-cq9" class="provider-game-list" style="display:none;"><div class="back-bar" onclick="backToProvider()"><i class="fa-solid fa-arrow-left"></i> KEMBALI</div><div style="text-align:center;padding:50px;">Game CQ9 Segera Hadir</div></div>
+
+        </div>
+
+
+        <div id="view-casino" class="category-view" style="display: none;"><div class="section-head"><div class="sec-title">LIVE CASINO</div></div><div class="game-grid"></div></div>
+        <div id="view-sport" class="category-view" style="display: none;"><div class="section-head"><div class="sec-title">SPORTSBOOK</div></div><div class="game-grid"></div></div>
+        <div id="view-poker" class="category-view" style="display: none;"><div class="section-head"><div class="sec-title">POKER ONLINE</div></div><div class="game-grid"></div></div>
+        <div id="view-togel" class="category-view" style="display: none;"><div class="section-head"><div class="sec-title">TOGEL 4D</div></div><div class="game-grid"></div></div>
+        <div id="view-fishing" class="category-view" style="display: none;"><div class="section-head"><div class="sec-title">FISHING</div></div><div class="game-grid"></div></div>
+        
+                <div id="view-vip" class="category-view" style="display: none;">
+            
+            <div class="vip-header-top">
+                <div class="vip-title-row">
+                    <span>VIP NEXUS S02</span>
+                    <div class="vip-icons"><i class="fa-solid fa-lightbulb"></i> | <i class="fa-solid fa-gem"></i></div>
+                </div>
+                <div class="vip-date">13/01/2026 03:00:00 - 13/03/2026 03:00:00</div>
+            </div>
+
+            <div class="vip-current-card">
+                <div class="vcc-title">VIP Saat Ini</div>
+                <div class="vcc-content">
+                    <div class="vcc-badge-iron">
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <div class="vcc-info">
+                        <div class="vcc-name" id="vip-username">User</div>
+                        <div class="vcc-xp-row">
+                            <span>0 XP</span>
+                            <span>0/3.000 XP <i class="fa-solid fa-circle-info"></i></span>
+                        </div>
+                        <div class="xp-bar-bg"><div class="xp-bar-fill" style="width: 0%;"></div></div>
+                        <div class="vcc-update">Last Update : Hari ini</div>
+                    </div>
+                </div>
+                <div class="vcc-rank-name">Iron</div>
+            </div>
+
+            <div class="vip-divider"><span>VIP Level & Hadiah</span></div>
+
+            <div class="vip-grid">
+                <div class="vip-card iron">
+                    <div class="vc-icon"><i class="fa-solid fa-star"></i></div>
+                    <div class="vc-name">Iron</div>
+                    <div class="vc-reward">5 Free Spins <i class="fa-solid fa-lock"></i></div>
+                </div>
+                <div class="vip-card copper">
+                    <div class="vc-icon"><i class="fa-solid fa-certificate"></i></div>
+                    <div class="vc-name">Copper</div>
+                    <div class="vc-reward">10 Free Spins <i class="fa-solid fa-lock"></i></div>
+                </div>
+                <div class="vip-card bronze">
+                    <div class="vc-icon"><i class="fa-solid fa-shield"></i></div>
+                    <div class="vc-name">Bronze</div>
+                    <div class="vc-reward">20 Free Spins <i class="fa-solid fa-lock"></i></div>
+                </div>
+                <div class="vip-card silver">
+                    <div class="vc-icon"><i class="fa-solid fa-medal"></i></div>
+                    <div class="vc-name">Silver</div>
+                    <div class="vc-reward">Rp 4.000 + 30 FS <i class="fa-solid fa-lock"></i></div>
+                </div>
+                <div class="vip-card gold">
+                    <div class="vc-icon"><i class="fa-solid fa-crown"></i></div>
+                    <div class="vc-name">Gold</div>
+                    <div class="vc-reward">Rp 8.000 + 60 FS <i class="fa-solid fa-lock"></i></div>
+                </div>
+                <div class="vip-card platinum">
+                    <div class="vc-icon"><i class="fa-regular fa-gem"></i></div>
+                    <div class="vc-name">Platinum</div>
+                    <div class="vc-reward">Rp 25.000 + 100 FS <i class="fa-solid fa-lock"></i></div>
+                </div>
+                <div class="vip-card emerald">
+                    <div class="vc-icon"><i class="fa-solid fa-leaf"></i></div>
+                    <div class="vc-name">Emerald</div>
+                    <div class="vc-reward">Rp 50.000 + 200 FS <i class="fa-solid fa-lock"></i></div>
+                </div>
+                <div class="vip-card ruby">
+                    <div class="vc-icon"><i class="fa-solid fa-heart"></i></div>
+                    <div class="vc-name">Ruby</div>
+                    <div class="vc-reward">Rp 280k + 600 FS <i class="fa-solid fa-lock"></i></div>
+                </div>
+                 <div class="vip-card diamond">
+                    <div class="vc-icon"><i class="fa-solid fa-snowflake"></i></div>
+                    <div class="vc-name">Diamond</div>
+                    <div class="vc-reward">Rp 800k + 800 FS <i class="fa-solid fa-lock"></i></div>
+                </div>
+            </div>
+            
+            <div style="height:80px;"></div>
+        </div>
+
+        <div class="payment-footer">
+            <div class="footer-title">METODE DEPOSIT TERSEDIA</div>
+            
+            <div class="server-status">
+                <div class="pulse-icon"></div>
+                <span>SERVER BANK: <b>ONLINE</b></span>
+            </div>
+
+            <div class="bank-grid">
+                <div class="bank-badge bca">BCA</div>
+                <div class="bank-badge bni">BNI</div>
+                <div class="bank-badge bri">BRI</div>
+                <div class="bank-badge mandiri">MANDIRI</div>
+                <div class="bank-badge cimb">CIMB</div>
+                <div class="bank-badge permata">PERMATA</div>
+                <div class="bank-badge dana">DANA</div>
+                <div class="bank-badge ovo">OVO</div>
+                <div class="bank-badge gopay">GOPAY</div>
+                <div class="bank-badge linkaja">LINKAJA</div>
+                <div class="bank-badge sakuku">SAKUKU</div>
+                <div class="bank-badge qris">QRIS</div>
+            </div>
+
+            <div class="copyright-box">
+                <div class="nexus-logo">NEXUS122</div>
+                &copy; 2026 Copyright. All Rights Reserved.<br>
+                <span style="color:#666; font-size:9px;">Provider Game Berlisensi Resmi PAGCOR.</span>
+            </div>
+        </div>
+
+
+    </main>   
+    
+    <nav class="bottom-bar">
+        <div class="b-item active" onclick="switchCategory('home', document.querySelectorAll('.cat-item')[0])">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+        </div>
+        <div class="b-item" onclick="openTransaction('depo')">
+            <i class="fa-solid fa-wallet"></i>
+            <span>Deposit</span>
+        </div>
+        <div class="b-item" onclick="toggleSidebar()">
+            <i class="fa-solid fa-user"></i>
+            <span>Akun</span>
+        </div>
+    </nav>
+
+    <div class="modal" id="loginModal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>Masuk Akun</h3>
+                <i class="fa-solid fa-xmark close-btn" onclick="closeModal('loginModal')"></i>
+            </div>
+            <div class="modal-body">
+                <div class="inp-group"><label>Username</label><input type="text" id="logUser"></div>
+                <div class="inp-group"><label>Password</label><input type="password" id="logPass"></div>
+                <button class="btn-primary" onclick="processLogin()">MASUK SEKARANG</button>
+                <div class="text-hint">Belum punya akun? <span onclick="switchModal('loginModal','registerModal')">Daftar disini</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="registerModal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>Daftar Member Baru</h3>
+                <i class="fa-solid fa-xmark close-btn" onclick="closeModal('registerModal')"></i>
+            </div>
+            <div class="modal-body">
+                <div class="inp-group"><label>Username</label><input type="text" id="regUser" placeholder="Min 6 karakter (Tanpa Spasi)"></div>
+                <div class="inp-group"><label>Password</label><input type="password" id="regPass" placeholder="Buat kata sandi"></div>
+                <div class="inp-group"><label>No HP / WhatsApp</label><input type="number" id="regPhone" placeholder="08xxxxx"></div>
+                <div class="divider">Informasi Bank / E-Wallet</div>
+                <div class="inp-group">
+                    <label>Jenis Bank / E-Wallet</label>
+                    <select id="regBank">
+                        <option value="" disabled selected>-- Pilih Bank --</option>
+                        <optgroup label="E-Wallet">
+                            <option value="DANA">DANA</option><option value="GOPAY">GOPAY</option><option value="OVO">OVO</option>
+                            <option value="LINKAJA">LINKAJA</option><option value="SHOPEEPAY">SHOPEEPAY</option>
+                        </optgroup>
+                        <optgroup label="Bank Digital">
+                            <option value="SEABANK">SEABANK</option><option value="JAGO">BANK JAGO</option><option value="NEOBANK">NEOBANK / BNC</option>
+                        </optgroup>
+                        <optgroup label="Bank Konvensional">
+                            <option value="BCA">BCA</option><option value="BRI">BRI</option><option value="MANDIRI">MANDIRI</option><option value="BNI">BNI</option>
+                        </optgroup>
+                    </select>
+                </div>
+                <div class="inp-group"><label>Nomor Rekening / No. HP</label><input type="number" id="regAccNum" placeholder="Contoh: 089532xxxx"></div>
+                <div class="inp-group"><label>Nama Pemilik</label><input type="text" id="regAccName" placeholder="Sesuai nama di akun"></div>
+                <button class="btn-primary" onclick="processRegister()">DAFTAR SEKARANG</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="transModal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>Transaksi</h3>
+                <i class="fa-solid fa-xmark close-btn" onclick="closeModal('transModal')"></i></div>
+            <div class="tab-header">
+                <div class="tab-btn active" id="tab-depo" onclick="setTransTab('depo')">Deposit</div>
+                <div class="tab-btn" id="tab-wd" onclick="setTransTab('wd')">Penarikan</div>
+            </div>
+            <div class="modal-body">
+                
+                <div id="view-depo">
+                    <div class="inp-group">
+                        <label style="color:var(--gold); font-weight:bold;">Tujuan Transfer:</label>
+                        <select id="depoMethod" onchange="updateAdminBank()" style="background:#333; font-weight:bold;">
+                            <option value="QRIS">QRIS (Scan Langsung)</option>
+                            <option value="DANA">DANA (Trio Dharma Putra)</option>
+                            <option value="GOPAY">GOPAY (Rizki Aditya)</option>
+                            <option value="SEABANK">SEABANK (Lilis Alisah)</option>
+                        </select>
+                    </div>
+
+                    <div class="bank-info-box" id="admin-bank-container">
+                        <div id="bank-text-info">
+                            <div style="font-size:12px; color:#aaa; margin-bottom:5px;">Nomor Tujuan:</div>
+                            <div class="copy-box">
+                                <span class="admin-bank" id="admin-number">-</span>
+                                <button class="btn-copy" onclick="copyText()"><i class="fa-regular fa-copy"></i> SALIN</button>
+                            </div>
+                            <div class="admin-name" id="admin-name" style="margin-top:5px;">-</div>
+                        </div>
+                        <div id="bank-qr-info" style="display:none; text-align:center;">
+                            <img src="assets/Qris.png" onerror="this.src='https://placehold.co/200x200/fff/000?text=QRIS+ERROR'" style="width:200px; border-radius:10px; border:4px solid white;">
+                            <div style="font-size:10px; color:#aaa; margin-top:5px;">Scan menggunakan DANA/OVO/Gopay/Mobile Banking</div>
+                        </div>
+                    </div>
+                    
+                    <div class="inp-group">
+                        <label>Nominal Deposit</label>
+                        <div class="chip-grid">
+                            <button onclick="setAmount(20000)">20k</button>
+                            <button onclick="setAmount(50000)">50k</button>
+                            <button onclick="setAmount(100000)">100k</button>
+                        </div>
+                    </div>
+                    <div class="inp-group">
+                        <input type="number" id="depoAmount" placeholder="Atau ketik manual (Min 10.000)">
+                    </div>
+
+                    <div class="inp-group">
+                        <label style="color:var(--gold);">Upload Bukti Transfer (Wajib)</label>
+                        <input type="file" id="depoProof" accept="image/*" style="padding: 8px;">
+                        <div style="font-size:10px; color:#666; margin-top:3px;">*Format: JPG, PNG, JPEG</div>
+                    </div>
+
+                    <button class="btn-primary" onclick="submitDeposit()">KONFIRMASI DEPOSIT</button>
+                </div>
+
+                <div id="view-wd" style="display:none;">
+                    <div class="bank-info-box">
+                        <div>Rekening Pencairan Anda:</div>
+                        <div class="admin-bank" id="wd-user-bank">-</div>
+                        <div class="admin-name" id="wd-user-name">-</div>
+                    </div>
+                    <div class="inp-group">
+                        <label>Sisa Saldo</label>
+                        <div style="color:var(--gold); font-weight:bold; font-size:18px;" id="wd-user-saldo">IDR 0</div>
+                    </div>
+                    <div class="inp-group">
+                        <label>Jumlah Penarikan</label>
+                        <input type="number" id="wdAmount" placeholder="Min. 50.000">
+                    </div>
+                    <button class="btn-primary" style="background:#d32f2f;" onclick="submitWithdraw()">CAIRKAN DANA</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="historyModal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>Riwayat Transaksi</h3>
+                <i class="fa-solid fa-xmark close-btn" onclick="closeModal('historyModal')"></i>
+            </div>
+            <div class="modal-body">
+                <div class="tab-header" style="margin-bottom:15px; padding:0;">
+                    <div class="tab-btn active" style="width:100%; background:#222; color:var(--gold); cursor:default;">Semua Aktivitas</div>
+                </div>
+                
+                <div id="history-list" class="history-container">
+                    <div style="text-align:center; padding:20px; color:#666;">Memuat data...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="profileModal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>Edit Profil</h3>
+                <i class="fa-solid fa-xmark close-btn" onclick="closeModal('profileModal')"></i>
+            </div>
+            <div class="modal-body">
+                <div class="inp-group"><label>Email</label><input type="email" id="editEmail"></div>
+                <div class="inp-group"><label>No HP</label><input type="number" id="editPhone"></div>
+                <div class="inp-group"><label>Password Baru</label><input type="password" id="editPass" placeholder="Kosongkan jika tidak ubah"></div>
+                <button class="btn-primary" onclick="saveProfile()">SIMPAN PERUBAHAN</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+    
